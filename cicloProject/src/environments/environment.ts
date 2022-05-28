@@ -4,6 +4,8 @@
 
 export const environment = {
   production: false
+  // If you want to work locally, discomment the line below and put your local backend url
+  // baseUrl: 'http://localhost:9090/api/v1'
 };
 
 /*
