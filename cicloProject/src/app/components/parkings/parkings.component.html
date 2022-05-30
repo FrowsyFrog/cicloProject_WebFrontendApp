@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="create-submit-form">
+        <h3>Submit Parking</h3>
+        <div *ngIf="!submitted">
+          <div class="form-group">
+            <label for="location">Location</label>
+            <input
+              type="text"
+              class="form-control"
+              id="location"
+              required
+              [(ngModel)]="parking.ubicacion"
+              name="location"
+            />
+          </div>
+          <div class="form-group">
+            <label for="stars">Stars</label>
+            <input
+              type="number"
+              class="form-control"
+              id="stars"
+              required
+              [(ngModel)]="parking.stars"
+              name="stars"
+            />
+          </div>
+          <button (click)="saveParking()" class="btn btn-success">
+            Create
+          </button>
+        </div>
+        <br>
+        <div *ngIf="submitted">
+          <h5 style="color: green">Parking created!</h5>
+          <button class="btn btn-primary" (click)="newParking()">
+            Back
+          </button>
+        </div>
+        <div *ngIf="error">
+          <h5 style="color: red">{{error_msg}}</h5>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="col-6">
+      <h3>Parking List</h3>
+
+      <div class="parking-list" *ngFor="let parking of parkings">
+        <button type="button" class="list-group-item list-group-item-action" aria-current="true">
+          <div class="parking_line">
+            {{parking.ubicacion}}: {{parking.stars}} stars
+          </div>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

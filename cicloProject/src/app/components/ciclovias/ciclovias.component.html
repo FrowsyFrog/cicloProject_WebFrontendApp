@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="create-submit-form">
+        <h3>Submit Bikelane</h3>
+        <div *ngIf="!submitted">
+          <div class="form-group">
+            <label for="location">Location</label>
+            <input
+              type="text"
+              class="form-control"
+              id="location"
+              required
+              [(ngModel)]="bikelane.nombreCiclovia"
+              name="location"
+            />
+          </div>
+          <button (click)="saveBikelane()" class="btn btn-success">
+            Create
+          </button>
+        </div>
+        <br>
+        <div *ngIf="submitted">
+          <h5 style="color: green">Bikelane created!</h5>
+          <button class="btn btn-primary" (click)="newBikelane()">
+            Back
+          </button>
+        </div>
+        <div *ngIf="error">
+          <h5 style="color: red">{{error_msg}}</h5>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="col-6">
+      <h3>Bikelane List</h3>
+
+      <div class="bikelane-list" *ngFor="let bikelane of bikelanes">
+        <button type="button" class="list-group-item list-group-item-action" aria-current="true">
+          <div class="bikelane_line">
+            {{bikelane.nombreCiclovia}}
+          </div>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

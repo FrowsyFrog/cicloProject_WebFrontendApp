@@ -2,6 +2,7 @@
 
 .vscode
 .vim
+node_modules/
 
 # Compiled output
 /dist
