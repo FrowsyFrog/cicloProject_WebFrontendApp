@@ -1,13 +1,20 @@
 .create-submit-form {
     max-width: 400px;
     margin: auto;
+    margin-top: 20px;
+  }
+  .create-login-form {
+    max-width: 400px;
+    margin: auto;
+    margin-top: 50px;
   }
   .form-group {
     width: 70%;
   }
   
   .usuario-list {
-    margin: 10px;
+    max-width: 400px;
+    margin: auto;
   }
   
   
