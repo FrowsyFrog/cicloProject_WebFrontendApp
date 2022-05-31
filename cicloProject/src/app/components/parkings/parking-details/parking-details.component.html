@@ -33,15 +33,17 @@
                 <div class="modal-body">
                     <div class="divScroll">
                         <div class="divScrollChild">
-                            <div *ngFor="let _rating of ratings; let i = index">
-                                <div>
-                                    <label><strong>Calificacion #</strong></label> {{i+1}}
-                                </div> 
-                                <div>
-                                    <label><strong>Estrellas:</strong></label> {{_rating.estrellasCalificacion}}
-                                </div>
-                                <div>
-                                    <label><strong>Descripcion:</strong></label> {{_rating.descripcionCalificacion}}
+                            <div *ngIf="lengthCheck(ratings); else editable">
+                                <div *ngFor="let _rating of ratings; let i = index">
+                                    <div>
+                                        <label><strong>Calificacion #</strong></label> {{i+1}}
+                                    </div> 
+                                    <div>
+                                        <label><strong>Estrellas:</strong></label> {{_rating.estrellasCalificacion}}
+                                    </div>
+                                    <div>
+                                        <label><strong>Descripcion:</strong></label> {{_rating.descripcionCalificacion}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -53,6 +55,11 @@
             </div>
         </div>
     </div>
+    <ng-template #editable class="divScroll">
+        <div class="divScrollChild">
+            <label>Parece que aún no hay Calificaciones...</label>
+        </div>
+    </ng-template>
 </div>
 
 
@@ -103,7 +110,3 @@
 <div>
 
 </div>
-
-<ng-template #editable>
-    <label><strong>No hay Calificaciones...</strong></label>
-</ng-template>
