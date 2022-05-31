@@ -39,21 +39,35 @@
           <h5 style="color: red">{{ error_msg }}</h5>
         </div>
       </div>
+      <div class="col-md">
+        <div class="parking-detail">
+          <app-parking-details
+            [viewMode]="true"
+            [currentParking]="currentParking"
+          ></app-parking-details>
+        </div>
+      </div>
     </div>
     <br />
     <div class="col-6">
       <h3>Parking List</h3>
-
-      <div class="parking-list" *ngFor="let parking of parkings">
-        <button
-          type="button"
-          class="list-group-item list-group-item-action"
-          aria-current="true"
+      <div class="divScroll">
+        <div
+          class="parking-list"
+          *ngFor="let parking of parkings; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveParking(parking, i)"
         >
-          <div class="parking_line">
-            {{ parking.ubicacion }}: {{ parking.stars }} stars
-          </div>
-        </button>
+          <button
+            type="button"
+            class="list-group-item list-group-item-action"
+            aria-current="true"
+          >
+            <div class="parking_line">
+              {{ parking.ubicacion }}: {{ parking.stars }} stars
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>

@@ -15,7 +15,8 @@ const routes: Routes = [
   {path: 'rutas', component: RutaComponent},
   {path: 'findrutas', component: FindrutasComponent},
   {path: 'accounts', component: AccountComponent},
-  {path: 'usuarios', component: UsuarioComponent}
+  {path: 'usuarios', component: UsuarioComponent},
+  {path: '', redirectTo: '/accounts', pathMatch: 'full'}
 ];
 
 @NgModule({

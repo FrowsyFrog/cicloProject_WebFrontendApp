@@ -11,7 +11,7 @@ node_modules/
 /bazel-out
 
 # Node
-/node_modules
+/cicloproject/node_modules
 npm-debug.log
 yarn-error.log
 
@@ -40,6 +40,7 @@ cicloProject/.angular/cache
 /libpeerconnection.log
 testem.log
 /typings
+/cicloproject/.angular/cache
 
 # System files
 .DS_Store
