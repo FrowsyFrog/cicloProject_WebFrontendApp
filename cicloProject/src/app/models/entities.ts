@@ -8,3 +8,11 @@ export class Parking {
 export class Bikelane {
   nombreCiclovia?: string;
 }
+
+export class Ruta {
+  ubicacionSalida?: string;
+  ubicacionLlegada?: string;
+  flagTerminado?: boolean;
+  idUser?: number;
+  id?: number;
+}
