@@ -17,6 +17,7 @@ export class CicloviasComponent implements OnInit {
   error_msg = "";
   currentBikelane: Bikelane = {};
   currentIndex = -1;
+  bikelane_selected: boolean = false;
 
   constructor(private bikelaneService: BikelaneServiceService) { }
 
@@ -25,6 +26,7 @@ export class CicloviasComponent implements OnInit {
   }
 
   SetActiveBikelane(bikelane: Bikelane, index: number): void {
+    this.bikelane_selected = true;
     this.currentBikelane = bikelane;
     this.currentIndex = index;
 

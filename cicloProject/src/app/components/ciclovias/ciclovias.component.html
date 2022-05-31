@@ -18,7 +18,7 @@
       </div>
     </div>
     <br>
-    <div *ngIf="!currentBikelane">
+    <div *ngIf="!bikelane_selected">
       <h5 style="color:goldenrod"><b>No bikelane was selected!</b></h5>
     </div>
     <div class="bikelane-detail">
@@ -34,14 +34,14 @@
         <h3>Submit Bikelane</h3>
         <div *ngIf="!submitted">
           <div class="form-group">
-            <label for="location">Location</label>
+            <label for="name">Bikelane name</label>
             <input
               type="text"
               class="form-control"
-              id="location"
+              id="name"
               required
               [(ngModel)]="bikelane.nombreCiclovia"
-              name="location"
+              name="name"
             />
           </div>
           <button (click)="saveBikelane()" class="btn btn-success">
