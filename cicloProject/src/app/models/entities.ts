@@ -8,3 +8,11 @@ export class Parking {
 export class Bikelane {
   nombreCiclovia?: string;
 }
+
+export class Rating {
+  id?: number;
+  stars?: number;
+  descripcion?: string;
+  idciclovia?: number;
+  idparking?: number;
+}

@@ -1,0 +1,11 @@
+.rating-list{
+    margin: 10px;      
+}
+.divScroll {
+    overflow-y:scroll;
+    height:300px;
+}
+.form-group {
+    width: 70%;
+  }
+  

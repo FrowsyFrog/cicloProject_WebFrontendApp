@@ -14,6 +14,8 @@ export class ParkingsComponent implements OnInit {
   submitted = false;
   error = false;
   error_msg = "";
+  currentParking: Parking = {};
+  currentIndex = -1;
 
   constructor(private parkingService: ParkingService) { }
 
@@ -21,11 +23,15 @@ export class ParkingsComponent implements OnInit {
     this.retrieveParkings();
   }
 
+  setActiveParking(parking: Parking, index: number): void {
+    this.currentParking = parking;
+    this.currentIndex = index;
+  }
+
   retrieveParkings(): void {
     this.parkingService.getAll().subscribe({
       next: (data) => {
         this.parkings = data;
-        console.log(data);
       },
       error: (e) => console.error(e),
     });
@@ -41,7 +47,6 @@ export class ParkingsComponent implements OnInit {
     this.error_msg = "";
     this.parkingService.create(data).subscribe({
       next: (res) => {
-        console.log(res);
         this.submitted = true;
         this.error = false;
         this.retrieveParkings();

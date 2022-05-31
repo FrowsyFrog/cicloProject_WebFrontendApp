@@ -7,6 +7,15 @@
 }
 
 .parking-list {
-  margin: 10px;
+  margin-bottom: 10px;
 }
 
+.parking-detail {
+  margin-left: 40px;
+  margin-top: 20vh;
+}
+
+.divScroll {
+  overflow-y:scroll;
+  height:300px;
+}
