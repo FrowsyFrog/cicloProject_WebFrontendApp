@@ -23,8 +23,9 @@ export class CicloviaDetailsComponent implements OnInit {
   ratings?: Rating[];
   rating: Rating = new Rating;
 
-
   submitted = false;
+  error = false;
+  error_msg = "";
    
   closeResult: string = '';
 
@@ -60,16 +61,22 @@ export class CicloviaDetailsComponent implements OnInit {
     this.bikelaneService.createRating(this.currentBikelane.idCiclovia, data).subscribe({
       next: (res) => {
         this.submitted = true;
+        this.error = false;
         this.newRating();
       },
       error: (e) => { 
         console.error(e);
+        this.error = true;
+        this.error_msg = e.error.message;
       }
     });
   }
   newRating() : void {
     this.submitted = false;
     this.rating = new Rating;
+
+    document.getElementById('myModal2')?.click();
+  
     this.navigate();
   }
 
