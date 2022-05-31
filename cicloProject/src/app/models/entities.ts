@@ -11,8 +11,6 @@ export class Bikelane {
 
 export class Rating {
   id?: number;
-  stars?: number;
-  descripcion?: string;
-  idciclovia?: number;
-  idparking?: number;
+  estrellasCalificacion?: number;
+  descripcionCalificacion?: string;
 }

@@ -1,6 +1,4 @@
 <div>
-
-
     <div *ngIf="viewMode == true" class="col">
         <div *ngIf="currentParking.id" class="currentParking">
             <h4>Parking</h4> 
@@ -16,7 +14,7 @@
             <div *ngIf="currentParking.isFull!=1">
                 <label><strong>Disponibilidad:</strong></label> {{"Disponible"}}
             </div>
-            <button type="button" (click)="getRating(currentParking.id)" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal" data-backdrop="true">Calificaciones</button>
+            <button type="button" (click)="getRating((currentParking.id))" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal" data-backdrop="true">Calificaciones</button>
         </div>
     </div>
 </div>
@@ -33,17 +31,21 @@
                     <button type="button" class="close" aria-label="Close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                        <div *ngFor="let _rating of ratings; let i = index">
-                            <div>
-                                <label><strong>Calificacion #</strong></label> {{i+1}}
-                            </div> 
-                            <div>
-                                <label><strong>Estrellas:</strong></label> {{_rating.stars}}
-                            </div>
-                            <div>
-                                <label><strong>Descripcion:</strong></label> {{_rating.descripcion}}
+                    <div class="divScroll">
+                        <div class="divScrollChild">
+                            <div *ngFor="let _rating of ratings; let i = index">
+                                <div>
+                                    <label><strong>Calificacion #</strong></label> {{i+1}}
+                                </div> 
+                                <div>
+                                    <label><strong>Estrellas:</strong></label> {{_rating.estrellasCalificacion}}
+                                </div>
+                                <div>
+                                    <label><strong>Descripcion:</strong></label> {{_rating.descripcionCalificacion}}
+                                </div>
                             </div>
                         </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" data-dismiss="modal" (click)="navigate()" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal2" data-backdrop="true">¡Calificar!</button>
@@ -74,7 +76,7 @@
                         class="form-control"
                         id="stars"
                         required    
-                        [(ngModel)]="rating.stars"
+                        [(ngModel)]="rating.estrellasCalificacion"
                         name="stars"
                       />
                     </div>
@@ -84,15 +86,14 @@
                         type="text"
                         class="form-control"
                         id="descripcion"
-                        required
-                        [(ngModel)]="rating.descripcion"
+                        [(ngModel)]="rating.descripcionCalificacion"
                         name="descripcion"
                       />
                     </div>
                   </div>
             </div>
             <div class="modal-footer">
-                <button type="button" (click)="saveRating()" class="btn btn-info btn-md" data-dismiss="modal">
+                <button type="button" (click)="saveRating()" class="btn btn-primary" data-dismiss="modal">
                     Create
                   </button>
             </div>

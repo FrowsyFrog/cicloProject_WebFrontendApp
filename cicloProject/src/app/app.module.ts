@@ -8,6 +8,7 @@ import { CicloviasComponent } from './components/ciclovias/ciclovias.component';
 import { ParkingsComponent } from './components/parkings/parkings.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ParkingDetailsComponent } from './components/parkings/parking-details/parking-details.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ParkingDetailsComponent } from './components/parkings/parking-details/p
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

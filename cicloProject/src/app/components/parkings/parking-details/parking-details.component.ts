@@ -64,22 +64,20 @@ export class ParkingDetailsComponent implements OnInit {
   }
 
   saveRating() : void {
-
-    let data = {
-      stars: this.rating.stars,
-      descripcion: this.rating.descripcion,
-      idciclovia: NaN,
-      idparking: this.currentParking.id,
+    const data = {
+      estrellasCalificacion: this.rating.estrellasCalificacion,
+      descripcionCalificacion: this.rating.descripcionCalificacion,
+      parking: (this.currentParking),
     };
     this.parkingService.createRating(this.currentParking.id, data).subscribe({
       next: (res) => {
         this.submitted = true;
+        this.newRating();
       },
       error: (e) => { 
         console.error(e);
       }
     });
-    this.newRating();
   }
   newRating() : void {
     this.submitted = false;
@@ -88,7 +86,6 @@ export class ParkingDetailsComponent implements OnInit {
   }
 
   navigate(): void{
-    this.viewMode = !this.viewMode;
     this.viewMode2 = !this.viewMode2;
     this.viewMode3 = !this.viewMode3;
   }
