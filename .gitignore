@@ -11,7 +11,7 @@ node_modules/
 /bazel-out
 
 # Node
-/node_modules
+/cicloproject/node_modules
 npm-debug.log
 yarn-error.log
 
@@ -33,13 +33,14 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-cicloproject/.angular/cache
+/cicloproject/.angular/cache
 .sass-cache/
 /connect.lock
 /coverage
 /libpeerconnection.log
 testem.log
 /typings
+/cicloproject/.angular/cache
 
 # System files
 .DS_Store

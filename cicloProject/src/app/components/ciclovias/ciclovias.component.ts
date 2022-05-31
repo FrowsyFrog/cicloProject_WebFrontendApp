@@ -11,14 +11,32 @@ export class CicloviasComponent implements OnInit {
 
   bikelane: Bikelane = new Bikelane;
   bikelanes?: Bikelane[];
+  averageStars : number = 0;
   submitted = false;
   error = false;
   error_msg = "";
+  currentBikelane: Bikelane = {};
+  currentIndex = -1;
+  bikelane_selected: boolean = false;
 
   constructor(private bikelaneService: BikelaneServiceService) { }
 
   ngOnInit(): void {
     this.retrieveBikelanes();
+  }
+
+  SetActiveBikelane(bikelane: Bikelane, index: number): void {
+    this.bikelane_selected = true;
+    this.currentBikelane = bikelane;
+    this.currentIndex = index;
+
+    this.bikelaneService.getStars(bikelane.idCiclovia).subscribe({
+      next: (data) => {
+        this.averageStars = data;
+      },
+      error: (e) => console.error(e),
+      complete: () => console.log('done')
+    });
   }
 
   retrieveBikelanes(): void {
@@ -31,7 +49,6 @@ export class CicloviasComponent implements OnInit {
     });
   }
   saveBikelane() : void {
-
     let data = {
       nombreCiclovia: this.bikelane.nombreCiclovia
     };

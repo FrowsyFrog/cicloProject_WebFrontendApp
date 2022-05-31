@@ -7,6 +7,9 @@ import {FormsModule} from '@angular/forms';
 import { CicloviasComponent } from './components/ciclovias/ciclovias.component';
 import { ParkingsComponent } from './components/parkings/parkings.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ParkingDetailsComponent } from './components/parkings/parking-details/parking-details.component';
+import { CicloviaDetailsComponent } from './components/ciclovias/ciclovia-details/ciclovia-details.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { RutaComponent } from './components/ruta/ruta.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { AccountComponent } from './components/account/account.component';
@@ -16,6 +19,8 @@ import { AccountComponent } from './components/account/account.component';
     AppComponent,
     CicloviasComponent,
     ParkingsComponent,
+    ParkingDetailsComponent,
+    CicloviaDetailsComponent,
     RutaComponent,
     UsuarioComponent,
     AccountComponent
@@ -25,7 +30,8 @@ import { AccountComponent } from './components/account/account.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
