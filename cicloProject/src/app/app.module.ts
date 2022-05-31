@@ -8,13 +8,15 @@ import { CicloviasComponent } from './components/ciclovias/ciclovias.component';
 import { ParkingsComponent } from './components/parkings/parkings.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RutaComponent } from './components/ruta/ruta.component';
+import { UsuarioComponent } from './components/usuario/usuario.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CicloviasComponent,
     ParkingsComponent,
-    RutaComponent
+    RutaComponent,
+    UsuarioComponent
   ],
   imports: [
     BrowserModule,

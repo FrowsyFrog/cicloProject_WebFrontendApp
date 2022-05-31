@@ -16,3 +16,12 @@ export class Ruta {
   idUser?: number;
   id?: number;
 }
+
+export class Usuario {
+  nombreUsuario?: string;
+  email?: string;
+  imageurl?: string;
+  password?: string;
+  cryptmethod?: string;
+  idUser?: number;
+}
