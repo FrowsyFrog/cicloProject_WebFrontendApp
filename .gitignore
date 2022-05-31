@@ -45,3 +45,4 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+cicloProject/src/environments/environment.ts

@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="create-submit-form">
+          <h3>Submit Route</h3>
+          <br>
+          <div *ngIf="!submitted">
+            <div class="form-group">
+              <label for="ubicacionSalida">Start Point</label>
+              <input
+                type="text"
+                class="form-control"
+                id="ubicacionSalida"
+                required
+                [(ngModel)]="ruta.ubicacionSalida"
+                name="ubicacionSalida"
+              />
+            </div>
+            <div class="form-group">
+              <label for="ubicacionLlegada">Finish Point</label>
+              <input
+                type="text"
+                class="form-control"
+                id="ubicacionLlegada"
+                required
+                [(ngModel)]="ruta.ubicacionLlegada"
+                name="ubicacionLlegada"
+              />
+            </div>
+            <div class="form-group">
+                <label for="idUser">User Id</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="idUser"
+                  required
+                  [(ngModel)]="ruta.idUser"
+                  name="idUser"
+                />
+            </div>
+            <br>
+            <button (click)="saveRuta()" class="btn btn-success">
+              Create
+            </button>
+          </div>
+          <br>
+          <div *ngIf="submitted">
+            <h5 style="color: green">Route created!</h5>
+            <button class="btn btn-primary" (click)="newRuta()">
+              Back
+            </button>
+          </div>
+          <div *ngIf="error">
+            <h5 style="color: red">{{error_msg}}</h5>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="col-8">
+        <br>
+        <h3>Route List</h3>
+  
+        <div class="ruta-list" *ngFor="let ruta of rutas">
+          <button type="button" class="list-group-item list-group-item-action" aria-current="true">
+            <div class="ruta_line">
+              {{ruta.ubicacionSalida}} - {{ruta.ubicacionLlegada}}
+            </div>
+          </button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  
