@@ -7,12 +7,18 @@ import {FormsModule} from '@angular/forms';
 import { CicloviasComponent } from './components/ciclovias/ciclovias.component';
 import { ParkingsComponent } from './components/parkings/parkings.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RutaComponent } from './components/ruta/ruta.component';
+import { UsuarioComponent } from './components/usuario/usuario.component';
+import { AccountComponent } from './components/account/account.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CicloviasComponent,
-    ParkingsComponent
+    ParkingsComponent,
+    RutaComponent,
+    UsuarioComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
