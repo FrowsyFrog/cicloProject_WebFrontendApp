@@ -9,6 +9,8 @@ import {BikelaneServiceService} from 'src/app/services/bikelane-service.service'
 })
 export class CicloviasComponent implements OnInit {
 
+  selectedBikelane?: Bikelane;
+  averageStars? : number;
   bikelane: Bikelane = new Bikelane;
   bikelanes?: Bikelane[];
   submitted = false;
@@ -19,6 +21,18 @@ export class CicloviasComponent implements OnInit {
 
   ngOnInit(): void {
     this.retrieveBikelanes();
+  }
+
+  onSelect(bikelane: Bikelane): void {
+    this.selectedBikelane = bikelane;
+    this.bikelaneService.getStars(this.selectedBikelane.idCiclovia).subscribe({
+      next: (data) => {
+        this.averageStars = data;
+      },
+      error: (e) => console.error(e),
+      complete: () => console.log('done')
+    });
+    console.log(this.selectedBikelane);
   }
 
   retrieveBikelanes(): void {

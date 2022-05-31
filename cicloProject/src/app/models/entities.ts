@@ -7,4 +7,5 @@ export class Parking {
 
 export class Bikelane {
   nombreCiclovia?: string;
+  idCiclovia?: number;
 }

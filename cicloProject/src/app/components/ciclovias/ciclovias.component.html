@@ -1,5 +1,37 @@
 <div class="container">
   <div class="row">
+    <div class="col-6">
+      <h3>Bikelane List</h3>
+      <div class="bikelane-list" *ngFor="let bikelane of bikelanes">
+        <button [class.selected]="selectedBikelane === bikelane"
+        (click)="onSelect(bikelane)"
+        type="button" 
+        class="list-group-item list-group-item-action" 
+        aria-current="true">
+          <div class="bikelane_line">
+            {{bikelane.nombreCiclovia}}
+          </div>
+        </button>
+      </div>
+    </div>
+    <br>
+    <div *ngIf="!selectedBikelane">
+      <h5 style="color:goldenrod"><b>No bikelane was selected!</b></h5>
+    </div>
+    <div *ngIf="selectedBikelane">
+      <h3>Bikelane Details</h3>
+      <div><b>Name:</b> {{selectedBikelane.nombreCiclovia}}</div>
+      <div><b>Id:</b> {{selectedBikelane.idCiclovia}}</div>
+      <div><b>Stars:</b> {{averageStars}}</div>
+      <br>
+      <button type="button"
+      class="btn btn-primary">
+        Show califications
+      </button>
+    </div>
+  </div>
+
+  <div class ="row-2">
     <div class="col">
       <div class="create-submit-form">
         <h3>Submit Bikelane</h3>
@@ -21,7 +53,7 @@
         </div>
         <br>
         <div *ngIf="submitted">
-          <h5 style="color: green">Bikelane created!</h5>
+          <h5 style="color: green">Bikelane "{{bikelane.nombreCiclovia}}" created!</h5>
           <button class="btn btn-primary" (click)="newBikelane()">
             Back
           </button>
@@ -30,19 +62,6 @@
           <h5 style="color: red">{{error_msg}}</h5>
         </div>
       </div>
-    </div>
-    <br>
-    <div class="col-6">
-      <h3>Bikelane List</h3>
-
-      <div class="bikelane-list" *ngFor="let bikelane of bikelanes">
-        <button type="button" class="list-group-item list-group-item-action" aria-current="true">
-          <div class="bikelane_line">
-            {{bikelane.nombreCiclovia}}
-          </div>
-        </button>
-      </div>
-
     </div>
   </div>
 </div>
