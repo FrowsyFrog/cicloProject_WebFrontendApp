@@ -18,7 +18,7 @@ export class Ruta {
 }
 
 export class Usuario {
-  nombreUsuario?: string;
+  username?: string;
   email?: string;
   imageurl?: string;
   password?: string;
