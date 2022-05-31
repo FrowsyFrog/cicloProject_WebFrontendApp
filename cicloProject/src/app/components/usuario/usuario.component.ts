@@ -1,6 +1,5 @@
 import { UsuarioService } from './../../services/usuario.service';
 import { Usuario } from 'src/app/models/entities';
-import { Ruta } from 'src/app/models/entities';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -12,9 +11,7 @@ export class UsuarioComponent implements OnInit {
 
   usuario: Usuario = new Usuario;
   usuarios?: Usuario[];
-  rutas?: Ruta[];
   submitted = false;
-  logInSubmitted = false;
   error = false;
   error_msg = "";
 
@@ -22,32 +19,7 @@ export class UsuarioComponent implements OnInit {
 
   ngOnInit(): void {
     this.retrieveUsers();
-    this.retrieveRutas();
   }
-
-  logInUsuario(email: any, password: any): void {
-    this.usuarioService.getUserByLogIn(email, password).subscribe({
-      next: (data) => {
-        this.usuario = data;
-        console.log(data);
-      },
-      error: (e) => console.error(e),
-    });
-    this.logInSubmitted = true;
-    this.retrieveRutas();
-  }
-
-  retrieveRutas(): void {
-    this.usuarioService.getRutasByUser(this.usuario.idUser).subscribe({
-      next: (data) => {
-        this.rutas = data;
-        console.log(data);
-        this.logInSubmitted = true;
-      },
-      error: (e) => console.error(e),
-    })
-  }
-
   retrieveUsers(): void {
     this.usuarioService.getAll().subscribe({
       next: (data) => {
@@ -82,7 +54,6 @@ export class UsuarioComponent implements OnInit {
   }
   newUsuario() : void {
     this.submitted = false;
-    this.logInSubmitted = false;
     this.usuario = new Usuario;
     this.error = false;
     this.error_msg = "";

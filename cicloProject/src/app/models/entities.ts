@@ -14,7 +14,7 @@ export class Ruta {
   ubicacionLlegada?: string;
   flagTerminado?: boolean;
   idUser?: number;
-  id?: number;
+  idRuta?: number;
 }
 
 export class Usuario {
