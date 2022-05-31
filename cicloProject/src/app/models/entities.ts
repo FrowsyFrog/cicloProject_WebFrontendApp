@@ -8,3 +8,8 @@ export class Parking {
 export class Bikelane {
   nombreCiclovia?: string;
 }
+
+export class Report {
+  description?: string;
+  idUser?: number;
+}
