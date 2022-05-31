@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReportsComponent } from './components/reports/reports.component';
 import { RutaComponent } from './components/ruta/ruta.component';
 import { FindrutasComponent } from './findrutas/findrutas.component';
+import { UsuarioComponent } from './components/usuario/usuario.component';
+import { AccountComponent } from './components/account/account.component';
 
 @NgModule({
   declarations: [
@@ -17,8 +19,10 @@ import { FindrutasComponent } from './findrutas/findrutas.component';
     CicloviasComponent,
     ParkingsComponent,
     ReportsComponent,
-    RutaComponent,
     FindrutasComponent,
+    RutaComponent,
+    UsuarioComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,

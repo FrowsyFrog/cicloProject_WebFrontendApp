@@ -15,7 +15,7 @@ export class RutaComponent implements OnInit {
   error = false;
   error_msg = "";
 
-  constructor(private rutaService: RutaService,) { }
+  constructor(private rutaService: RutaService) { }
 
   ngOnInit(): void {
     this.retrieveRutas();

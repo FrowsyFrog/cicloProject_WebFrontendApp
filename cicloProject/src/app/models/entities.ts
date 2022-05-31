@@ -26,3 +26,12 @@ export class FindRutas {
   ubicacionSalida?: string;
   ubicacionLlegada?: string;
 }
+
+export class Usuario {
+  username?: string;
+  email?: string;
+  imageurl?: string;
+  password?: string;
+  cryptmethod?: string;
+  idUser?: number;
+}

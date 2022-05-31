@@ -3,6 +3,7 @@
     <div class="col">
       <div class="create-submit-form">
         <h3>Submit Route</h3>
+        <br />
         <div *ngIf="!submitted">
           <div class="form-group">
             <label for="ubicacionSalida">Start Point</label>
@@ -37,6 +38,7 @@
               name="idUser"
             />
           </div>
+          <br />
           <button (click)="saveRuta()" class="btn btn-success">Create</button>
         </div>
         <br />
@@ -50,15 +52,17 @@
       </div>
     </div>
     <br />
-    <div class="col-6">
+    <div class="col-8">
+      <br />
       <h3>Route List</h3>
+
       <div class="ruta-list" *ngFor="let ruta of rutas">
         <button
           type="button"
           class="list-group-item list-group-item-action"
           aria-current="true"
         >
-          <div class="parking_line">
+          <div class="ruta_line">
             {{ ruta.ubicacionSalida }} - {{ ruta.ubicacionLlegada }}
           </div>
         </button>
