@@ -1,23 +1,24 @@
+import { BikelaneServiceService } from './../../../services/bikelane-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ParkingService } from './../../../services/parking.service';
 import { Component, Input, OnInit } from '@angular/core';
-import { Parking, Rating } from 'src/app/models/entities';
+import { Parking, Rating, Bikelane } from 'src/app/models/entities';
 
 @Component({
-  selector: 'app-parking-details',
-  templateUrl: './parking-details.component.html',
-  styleUrls: ['./parking-details.component.css']
+  selector: 'app-ciclovia-details',
+  templateUrl: './ciclovia-details.component.html',
+  styleUrls: ['./ciclovia-details.component.css']
 })
-export class ParkingDetailsComponent implements OnInit {
+export class CicloviaDetailsComponent implements OnInit {
   @Input() viewMode = false;
   viewMode2 = false;
   viewMode3 = false;
 
-  @Input() currentParking: Parking = {
-    ubicacion: '',
-    stars: NaN,
-    isFull: NaN,
+  @Input() currentBikelane: Bikelane = {
+    nombreCiclovia: ''
   }
+
+  @Input() averageStars: number = 0;
 
   ratings?: Rating[];
   rating: Rating = new Rating;
@@ -27,7 +28,7 @@ export class ParkingDetailsComponent implements OnInit {
    
   closeResult: string = '';
 
-  constructor(private parkingService: ParkingService, private route: ActivatedRoute) {
+  constructor(private bikelaneService: BikelaneServiceService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -43,7 +44,7 @@ export class ParkingDetailsComponent implements OnInit {
 
   getRating(id: number): void{
     this.viewMode2=true;
-    this.parkingService.getRating(id).subscribe({
+    this.bikelaneService.getRating(id).subscribe({
       next: (data) => {
         this.ratings = data;
       },
@@ -55,9 +56,8 @@ export class ParkingDetailsComponent implements OnInit {
     const data = {
       estrellasCalificacion: this.rating.estrellasCalificacion,
       descripcionCalificacion: this.rating.descripcionCalificacion,
-      parking: (this.currentParking),
     };
-    this.parkingService.createRating(this.currentParking.id, data).subscribe({
+    this.bikelaneService.createRating(this.currentBikelane.idCiclovia, data).subscribe({
       next: (res) => {
         this.submitted = true;
         this.newRating();

@@ -2,32 +2,29 @@
   <div class="row">
     <div class="col-6">
       <h3>Bikelane List</h3>
-      <div class="bikelane-list" *ngFor="let bikelane of bikelanes">
-        <button [class.selected]="selectedBikelane === bikelane"
-        (click)="onSelect(bikelane)"
-        type="button" 
-        class="list-group-item list-group-item-action" 
-        aria-current="true">
-          <div class="bikelane_line">
-            {{bikelane.nombreCiclovia}}
-          </div>
-        </button>
+
+      <div class="divScroll">
+        <div class="bikelane-list" *ngFor="let bikelane of bikelanes; 
+        let i = index" [class.active]="i == currentIndex" 
+        (click)="SetActiveBikelane(bikelane, i)">
+          <button type="button" 
+          class="list-group-item list-group-item-action" 
+          aria-current="true">
+            <div class="parking_line">
+              {{bikelane.nombreCiclovia}}
+            </div>
+          </button>
+        </div>
       </div>
     </div>
     <br>
-    <div *ngIf="!selectedBikelane">
+    <div *ngIf="!currentBikelane">
       <h5 style="color:goldenrod"><b>No bikelane was selected!</b></h5>
     </div>
-    <div *ngIf="selectedBikelane">
-      <h3>Bikelane Details</h3>
-      <div><b>Name:</b> {{selectedBikelane.nombreCiclovia}}</div>
-      <div><b>Id:</b> {{selectedBikelane.idCiclovia}}</div>
-      <div><b>Stars:</b> {{averageStars}}</div>
-      <br>
-      <button type="button"
-      class="btn btn-primary">
-        Show califications
-      </button>
+    <div class="bikelane-detail">
+      <app-ciclovia-details [viewMode]="true" 
+      [currentBikelane]="currentBikelane" [averageStars]="averageStars">
+      </app-ciclovia-details>
     </div>
   </div>
 

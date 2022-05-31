@@ -9,13 +9,14 @@ import {BikelaneServiceService} from 'src/app/services/bikelane-service.service'
 })
 export class CicloviasComponent implements OnInit {
 
-  selectedBikelane?: Bikelane;
-  averageStars? : number;
   bikelane: Bikelane = new Bikelane;
   bikelanes?: Bikelane[];
+  averageStars : number = 0;
   submitted = false;
   error = false;
   error_msg = "";
+  currentBikelane: Bikelane = {};
+  currentIndex = -1;
 
   constructor(private bikelaneService: BikelaneServiceService) { }
 
@@ -23,16 +24,17 @@ export class CicloviasComponent implements OnInit {
     this.retrieveBikelanes();
   }
 
-  onSelect(bikelane: Bikelane): void {
-    this.selectedBikelane = bikelane;
-    this.bikelaneService.getStars(this.selectedBikelane.idCiclovia).subscribe({
+  SetActiveBikelane(bikelane: Bikelane, index: number): void {
+    this.currentBikelane = bikelane;
+    this.currentIndex = index;
+
+    this.bikelaneService.getStars(bikelane.idCiclovia).subscribe({
       next: (data) => {
         this.averageStars = data;
       },
       error: (e) => console.error(e),
       complete: () => console.log('done')
     });
-    console.log(this.selectedBikelane);
   }
 
   retrieveBikelanes(): void {
@@ -45,7 +47,6 @@ export class CicloviasComponent implements OnInit {
     });
   }
   saveBikelane() : void {
-
     let data = {
       nombreCiclovia: this.bikelane.nombreCiclovia
     };

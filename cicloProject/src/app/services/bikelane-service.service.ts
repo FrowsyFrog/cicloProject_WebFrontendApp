@@ -2,7 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import {environment} from 'src/environments/environment';
-import {Bikelane} from '../models/entities';
+import {Bikelane, Rating} from '../models/entities';
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +24,13 @@ export class BikelaneServiceService {
 
   getStars(id: any): Observable<number> {
     return this.http.get<number>(`${this.baseUrl}/ciclovia/${id}/calificaciones/promedio`);
+  }
+
+  getRating(id: any): Observable<Rating[]>{
+    return this.http.get<Rating[]>(`${this.baseUrl}/ciclovia/${id}/calificaciones`);
+  }
+
+  createRating(id: any, data: Rating): Observable<any> {
+    return this.http.post(`${this.baseUrl}/ciclovia/${id}/calificaciones`, data);
   }
 }
