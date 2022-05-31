@@ -13,3 +13,16 @@ export class Report {
   description?: string;
   idUser?: number;
 }
+
+export class Ruta {
+  ubicacionSalida?: string;
+  ubicacionLlegada?: string;
+  flagTerminado?: boolean;
+  idUser?: number;
+  idRuta?: number;
+}
+
+export class FindRutas {
+  ubicacionSalida?: string;
+  ubicacionLlegada?: string;
+}

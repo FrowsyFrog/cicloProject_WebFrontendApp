@@ -33,7 +33,7 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/.angular/cache
+cicloProject/.angular/cache
 .sass-cache/
 /connect.lock
 /coverage
@@ -48,3 +48,18 @@ cicloProject/src/environments/environment.ts
 cicloProject/src/environments/environment.ts
 cicloProject/src/environments/environment.ts
 cicloProject/src/environments/environment.ts
+cicloProject/.angular/cache/13.3.7/angular-webpack/5096aa72da3db392d772344feaacb17fe6f1f309/0.pack
+cicloProject/.angular/cache/13.3.7/angular-webpack/5096aa72da3db392d772344feaacb17fe6f1f309/1.pack
+cicloProject/.angular/cache/13.3.7/angular-webpack/5096aa72da3db392d772344feaacb17fe6f1f309/10.pack
+cicloProject/.angular/cache/13.3.7/angular-webpack/5096aa72da3db392d772344feaacb17fe6f1f309/11.pack
+cicloProject/.angular/cache/13.3.7/angular-webpack/5096aa72da3db392d772344feaacb17fe6f1f309/12.pack
+cicloProject/.angular/cache/13.3.7/angular-webpack/5096aa72da3db392d772344feaacb17fe6f1f309/2.pack
+cicloProject/.angular/cache/13.3.7/angular-webpack/5096aa72da3db392d772344feaacb17fe6f1f309/3.pack
+cicloProject/.angular/cache/13.3.7/angular-webpack/5096aa72da3db392d772344feaacb17fe6f1f309/4.pack
+cicloProject/.angular/cache/13.3.7/angular-webpack/5096aa72da3db392d772344feaacb17fe6f1f309/5.pack
+cicloProject/.angular/cache/13.3.7/angular-webpack/5096aa72da3db392d772344feaacb17fe6f1f309/6.pack
+cicloProject/.angular/cache/13.3.7/angular-webpack/5096aa72da3db392d772344feaacb17fe6f1f309/7.pack
+cicloProject/.angular/cache/13.3.7/angular-webpack/5096aa72da3db392d772344feaacb17fe6f1f309/8.pack
+cicloProject/.angular/cache/13.3.7/angular-webpack/5096aa72da3db392d772344feaacb17fe6f1f309/9.pack
+cicloProject/.angular/cache/13.3.7/angular-webpack/5096aa72da3db392d772344feaacb17fe6f1f309/index.pack
+cicloProject/.angular/cache/13.3.7/angular-webpack/5096aa72da3db392d772344feaacb17fe6f1f309/index.pack.old
