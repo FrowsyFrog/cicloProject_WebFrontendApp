@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Ruta } from 'src/app/models/entities';
+import { RutaxCiclovia } from './../../models/entities';
 import { RutaService } from 'src/app/services/ruta.service';
 
 @Component({
@@ -11,6 +12,7 @@ export class RutaComponent implements OnInit {
 
   ruta: Ruta = new Ruta;
   rutas?: Ruta[];
+  rutaxCiclovias?: RutaxCiclovia[];
   submitted = false;
   selected = false;
   error = false;
@@ -30,6 +32,22 @@ export class RutaComponent implements OnInit {
       },
       error: (e) => console.error(e),
     });
+  }
+  retrieveCiclovias(ruta: Ruta): void {
+    this.ruta = ruta;
+    if(this.selected == false) {
+      this.selected = true;
+      this.rutaService.getCicloviasByRuta(ruta.idRuta).subscribe({
+        next: (data) => {
+          this.rutaxCiclovias = data;
+          console.log(data);
+        },
+        error: (e) => console.error(e),
+      })
+    }
+    else {
+      this.selected = false;
+    }
   }
   saveRuta() : void {
 
