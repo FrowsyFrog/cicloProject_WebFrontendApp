@@ -43,3 +43,10 @@ export class Usuario {
   cryptmethod?: string;
   idUser?: number;
 }
+
+export class RutaxCiclovia {
+  idRuta?: number;
+  idCiclovia?: number;
+  tiempoRealizadp?: number;
+  idRutaxCiclovia?: number;
+}
