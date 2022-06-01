@@ -35,7 +35,9 @@
         </div>
         <div *ngIf="logInSubmitted">
           <h3>Welcome, {{usuario.username}}!</h3>
-          <br>
+          <img src={{usuario.imageurl}} style="width:200px;height:200px;">
+          <br />
+          <br />
           <button class="btn btn-primary" (click)="retrieveRutas()">
             Show Routes
           </button>
