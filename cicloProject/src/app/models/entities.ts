@@ -47,6 +47,6 @@ export class Usuario {
 export class RutaxCiclovia {
   idRuta?: number;
   idCiclovia?: number;
-  tiempoRealizadp?: number;
+  tiempoRealizado?: number;
   idRutaxCiclovia?: number;
 }
