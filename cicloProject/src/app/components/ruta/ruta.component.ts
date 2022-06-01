@@ -12,6 +12,7 @@ export class RutaComponent implements OnInit {
   ruta: Ruta = new Ruta;
   rutas?: Ruta[];
   submitted = false;
+  selected = false;
   error = false;
   error_msg = "";
 
