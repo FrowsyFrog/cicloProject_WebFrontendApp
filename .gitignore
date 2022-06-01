@@ -33,7 +33,7 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/cicloproject/.angular/cache
+cicloProject/.angular/cache
 .sass-cache/
 /connect.lock
 /coverage
