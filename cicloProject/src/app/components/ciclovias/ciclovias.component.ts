@@ -25,6 +25,10 @@ export class CicloviasComponent implements OnInit {
     this.retrieveBikelanes();
   }
 
+  UpdateActiveBikeLane() : void {
+    this.SetActiveBikelane(this.currentBikelane, this.currentIndex);
+  }
+  
   SetActiveBikelane(bikelane: Bikelane, index: number): void {
     this.bikelane_selected = true;
     this.currentBikelane = bikelane;

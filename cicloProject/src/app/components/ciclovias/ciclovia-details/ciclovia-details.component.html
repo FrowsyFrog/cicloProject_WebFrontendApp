@@ -4,7 +4,7 @@
             <h3>Bikelane Details</h3>
             <div><b>Name:</b> {{currentBikelane.nombreCiclovia}}</div>
             <div><b>Id:</b> {{currentBikelane.idCiclovia}}</div>
-            <div><b>Stars:</b> {{averageStars}}</div>
+            <div><b>Stars:</b> {{averageStars.toFixed(1)| number}}</div>
             <br>
             <button type="button" 
             (click)="getRating((currentBikelane.idCiclovia))" 
@@ -163,7 +163,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" (click)="saveRating()" class="btn btn-primary">
-                    Create
+                    Create Calification
                 </button>
             </div>
         </div>
