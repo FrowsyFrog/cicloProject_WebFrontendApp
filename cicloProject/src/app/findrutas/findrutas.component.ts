@@ -9,26 +9,64 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FindrutasComponent implements OnInit {
 
-  ubicacionSalida: any;
-  ubicacionLlegada: any;
+  ubicacionSalida: string;
+  ubicacionLlegada: string;
   rutas?: Ruta[];
   submitted = false;
   error = false;
   error_msg = "";
+  avgtime = 0;
+  fastestSearched: boolean = false;
+  rutaF: Ruta;
+  timeF: number;
 
   constructor(private findrutasService: FindrutasserviceService,) { }
 
   ngOnInit(): void {
-    this.retrieveRutas();
   }
 
   retrieveRutas(): void {
+    this.fastestSearched = false;
     this.findrutasService.getRutasXPuntos(this.ubicacionSalida,this.ubicacionLlegada).subscribe({
       next: (data) => {
         this.rutas = data;
+        this.error = false;
         console.log(data);
+        this.findrutasService.getTiempoEstimado(this.ubicacionSalida,this.ubicacionLlegada).subscribe({
+          next: (data) => {
+            this.avgtime = data;
+          },
+          error: (e) => { 
+            console.error(e);
+            this.error = true;
+            this.error_msg = e.error.message
+          }
+        });
       },
-      error: (e) => console.error(e),
+      error: (e) => { 
+        console.error(e);
+        this.error = true;
+        this.error_msg = e.error.message
+      }
+    });
+  }
+
+  retrieveFastest():void {
+    this.fastestSearched = true;
+    this.findrutasService.getTiempoMinimo(this.ubicacionSalida,this.ubicacionLlegada).subscribe({
+      next: (data) => {
+        this.rutaF = data;
+        this.findrutasService.getTiempoMinimo2(this.ubicacionSalida,this.ubicacionLlegada).subscribe({
+          next: (data) => {
+            this.timeF = data;
+          }
+        })
+      },
+      error: (e) => { 
+        console.error(e);
+        this.error = true;
+        this.error_msg = e.error.message
+      }
     });
   }
 
