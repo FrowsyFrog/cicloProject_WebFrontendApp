@@ -35,7 +35,9 @@
         </div>
         <div *ngIf="logInSubmitted">
           <h3>Welcome, {{usuario.username}}!</h3>
-          <br>
+          <img src={{usuario.imageurl}} style="width:200px;height:200px;">
+          <br />
+          <br />
           <button class="btn btn-primary" (click)="retrieveRutas()">
             Show Routes
           </button>
@@ -54,17 +56,46 @@
     <br>
     <div class = "col-8">
       <br>
-      <div *ngIf="showRutas">
+      <div *ngIf="showRutas && !rutaSelected">
         <div class="usuario-list">
           <h3>Route List</h3>
         </div>
         <div class="usuario-list" *ngFor="let ruta of rutas">
-          <button type="button" class="list-group-item list-group-item-action" aria-current="true">
+          <button 
+            type="button" 
+            class="list-group-item list-group-item-action" 
+            aria-current="true"
+            (click)="retrieveCiclovias(ruta)"
+          >
             <div class="ruta_line">
               {{ruta.ubicacionSalida}} - {{ruta.ubicacionLlegada}}
             </div>
           </button>
         </div>
+      </div>
+      <div *ngIf="rutaSelected">
+        <div class="usuario-list">
+          <h3>{{ruta.ubicacionSalida}} - {{ruta.ubicacionLlegada}}</h3>
+        </div>
+        <div class="ruta-list" *ngFor="let ciclovia of rutaxCiclovias; let i = index">
+          <button
+            type="button"
+            class="list-group-item list-group-item-action"
+            aria-current="true"
+          >
+            <div class="ciclovia_line">
+              Ciclovia #{{i+1}}: {{ ciclovia.tiempoRealizado }} minutos
+            </div>
+          </button>
+        </div>
+        <br>
+        <div>
+          La cantidad de calorias quemadas fue de {{calorias}} Cal
+        </div>
+        <br>
+        <button class="btn btn-primary" (click)="retrieveCiclovias(ruta)">
+          Back
+        </button>
       </div>
     </div>
 

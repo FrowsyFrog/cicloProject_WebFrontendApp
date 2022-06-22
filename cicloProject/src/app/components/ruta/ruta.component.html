@@ -53,20 +53,52 @@
     </div>
     <br />
     <div class="col-8">
-      <br />
-      <h3>Route List</h3>
-
-      <div class="ruta-list" *ngFor="let ruta of rutas">
-        <button
-          type="button"
-          class="list-group-item list-group-item-action"
-          aria-current="true"
-        >
-          <div class="ruta_line">
-            {{ ruta.ubicacionSalida }} - {{ ruta.ubicacionLlegada }}
-          </div>
-        </button>
+      <div *ngIf="!selected">
+        <h3>Route List</h3>
+        <div class="ruta-list" *ngFor="let ruta of rutas">
+          <button
+            type="button"
+            class="list-group-item list-group-item-action"
+            aria-current="true"
+            (click)="retrieveCiclovias(ruta)"
+          >
+            <div class="ruta_line">
+              {{ ruta.ubicacionSalida }} - {{ ruta.ubicacionLlegada }}
+            </div>
+          </button>
+        </div>
       </div>
+      <div *ngIf="selected">
+        <h3>Route {{ruta.idRuta}}</h3>
+        <div class="ruta-list">
+          <button
+            type="button"
+            class="list-group-item list-group-item-action"
+            aria-current="true"
+            (click)="retrieveCiclovias(ruta)"
+          >
+            <div class="ruta_line">
+              {{ ruta.ubicacionSalida }} - {{ ruta.ubicacionLlegada }}
+            </div>
+          </button>
+        </div>
+        <br />
+        <h3>Route's Bikelanes</h3>
+        <div class="ruta-list" *ngFor="let ciclovia of rutaxCiclovias; let i = index">
+          <button
+            type="button"
+            class="list-group-item list-group-item-action"
+            aria-current="true"
+          >
+            <div class="ciclovia_line">
+              Ciclovia #{{i+1}}: {{ ciclovia.tiempoRealizado }} minutos
+            </div>
+          </button>
+        </div>
+        <br />
+
+      </div>
+
     </div>
   </div>
 </div>
