@@ -23,13 +23,8 @@ export class CicloviasComponent implements OnInit {
 
   ngOnInit(): void {
     this.retrieveBikelanes();
-    this.getLocation();
   }
 
-  UpdateActiveBikeLane() : void {
-    this.SetActiveBikelane(this.currentBikelane, this.currentIndex);
-  }
-  
   SetActiveBikelane(bikelane: Bikelane, index: number): void {
     this.bikelane_selected = true;
     this.currentBikelane = bikelane;
@@ -80,15 +75,5 @@ export class CicloviasComponent implements OnInit {
     this.error_msg = "";
     this.retrieveBikelanes();
   }
-  getLocation(): void{
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position)=>{
-          console.log(position.coords);
-          const longitude = position.coords.longitude;
-          const latitude = position.coords.latitude;
-        });
-    } else {
-       console.log("No support for geolocation")
-    }
-  }
+
 }

@@ -1,8 +1,9 @@
 export class Parking {
   ubicacion?: string;
-  isFull?: number;
+  full?: boolean;
   stars?: number;
   id?: number;
+  descripcion?: string;
 }
 
 export class Bikelane {
@@ -14,7 +15,6 @@ export class Rating {
   id?: number;
   estrellasCalificacion?: number;
   descripcionCalificacion?: string;
-  parking?: Parking;
 }
 
 export class Report {

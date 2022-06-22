@@ -8,13 +8,15 @@
             <div>
                 <label><strong>Calificacion:</strong></label> {{currentParking.stars}}
             </div>
-            <div *ngIf="currentParking.isFull==1">
-                <label><strong>Disponibilidad:</strong></label> {{"Lleno"}}
+            <div *ngIf="currentParking.full">
+                <label><strong>Disponibilidad:</strong></label> {{"Lleno"}} 
             </div>
-            <div *ngIf="currentParking.isFull!=1">
+            <div *ngIf="!currentParking.full">
                 <label><strong>Disponibilidad:</strong></label> {{"Disponible"}}
             </div>
-            <button type="button" (click)="getRating((currentParking.id))" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal" data-backdrop="true">Calificaciones</button>
+            <div></div>
+            <button type="button" (click)="getRating(currentParking.id)" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal" data-backdrop="true">Calificaciones</button>
+            <button type="button" class="btn btn-info btn-md" style="position:relative; left:10px" (click)="changeDisp(currentParking.id)"> Disponibilidad </button>
         </div>
     </div>
 </div>
@@ -82,6 +84,9 @@
                         type="number"
                         class="form-control"
                         id="stars"
+                        min="0"
+                        onKeyDown="return false"
+                        max="5"
                         required    
                         [(ngModel)]="rating.estrellasCalificacion"
                         name="stars"
@@ -100,7 +105,7 @@
                   </div>
             </div>
             <div class="modal-footer">
-                <button type="button" (click)="saveRating()" class="btn btn-primary" data-dismiss="modal">
+                <button type="button" (click)="saveRating()" (click)="changeStars()" class="btn btn-primary" data-dismiss="modal">
                     Create
                   </button>
             </div>

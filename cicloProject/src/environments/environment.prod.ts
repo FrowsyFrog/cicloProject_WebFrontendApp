@@ -1,4 +1,4 @@
 export const environment = {
-  production: true,
-  baseUrl: 'https://ciclo-project.herokuapp.com/api/v1'
+  //production: true,
+  //baseUrl: 'https://ciclo-project.herokuapp.com/api/v1'
 };
