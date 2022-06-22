@@ -15,4 +15,13 @@ export class FindrutasserviceService {
   getRutasXPuntos(Salida: any,Llegada: any): Observable<Ruta[]> {
     return this.http.get<Ruta[]>(`${this.baseUrl}/ruta/distintasRutas/${Salida}/${Llegada}`);
   }
+  getTiempoEstimado(Salida: any,Llegada: any): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}/rutaxciclovia/tiempoEstimado/${Salida}/${Llegada}`)
+  }
+  getTiempoMinimo(Salida: any,Llegada: any): Observable<Ruta> {
+    return this.http.get<Ruta>(`${this.baseUrl}/ruta/tiempoMinimo/${Salida}/${Llegada}`)
+  }
+  getTiempoMinimo2(Salida: any,Llegada: any): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}/ruta/tiempoMinimo2/${Salida}/${Llegada}`)
+  }
 }
