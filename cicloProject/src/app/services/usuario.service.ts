@@ -1,3 +1,4 @@
+import { RutaxCiclovia } from './../models/entities';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -20,7 +21,10 @@ export class UsuarioService {
     return this.http.get(`${this.baseUrl}/user/findUserById/${id}`);
   }
   getUserByLogIn(email: any, password: any): Observable<Usuario> {
-    return this.http.get(`${this.baseUrl}/user/findUserByLogIn/?email=${email}&password=${password}`)
+    return this.http.get(`${this.baseUrl}/user/findUserByLogIn/?email=${email}&password=${password}`);
+  }
+  getTiempoByRuta(idRuta: any): Observable<RutaxCiclovia> {
+    return this.http.get(`${this.baseUrl}/rutaxciclovia/caloriasPorRuta/${idRuta}`);
   }
   getRutasByUser(id: any): Observable<Ruta[]> {
     return this.http.get<Ruta[]>(`${this.baseUrl}/ruta/encontrarRutasByUsuario/${id}`);
