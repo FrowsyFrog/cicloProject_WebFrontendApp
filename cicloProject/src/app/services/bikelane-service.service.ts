@@ -2,7 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import {environment} from 'src/environments/environment';
-import {Bikelane, Rating} from '../models/entities';
+import {Report, Bikelane, Rating} from '../models/entities';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +30,15 @@ export class BikelaneServiceService {
     return this.http.get<Rating[]>(`${this.baseUrl}/ciclovia/${id}/calificaciones`);
   }
 
+  getReports(id: any): Observable<Report[]>{
+    return this.http.get<Report[]>(`${this.baseUrl}/ciclovia/${id}/reports`);
+  }
+
   createRating(id: any, data: Rating): Observable<any> {
     return this.http.post(`${this.baseUrl}/ciclovia/${id}/calificaciones`, data);
+  }
+
+  createReport(id: any, data: Report): Observable<any> {
+    return this.http.post(`${this.baseUrl}/ciclovia/${id}/reports`, data);
   }
 }
