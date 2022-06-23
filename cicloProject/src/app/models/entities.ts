@@ -1,10 +1,10 @@
 export class Parking {
   ubicacion?: string;
-  isFull?: number;
+  full?: boolean;
   stars?: number;
   id?: number;
+  descripcion?: string;
 }
-
 export class Bikelane {
   nombreCiclovia?: string;
   idCiclovia?: number;
