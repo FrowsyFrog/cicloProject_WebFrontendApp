@@ -30,11 +30,5 @@ export class ParkingService {
     return this.http.post(`${this.baseUrl}/parking/${id}/calificaciones`, data);
   }
 
-  updateDis(id: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/parking/full/${id}`, null);
-  }
-  updateStars(id: any): Observable<any>{
-    return this.http.put(`${this.baseUrl}/parking/rating/${id}`, null);
-  }
 
 }

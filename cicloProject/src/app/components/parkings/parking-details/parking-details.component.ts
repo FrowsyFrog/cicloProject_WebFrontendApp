@@ -13,13 +13,14 @@ export class ParkingDetailsComponent implements OnInit {
   viewMode2 = false;
   viewMode3 = false;
 
-  @Input() currentParking: Parking;
+  @Input() currentParking: Parking = {
+    ubicacion: '',
+    stars: NaN,
+    isFull: NaN,
+  }
 
   ratings?: Rating[];
-  error = false;
-  error_msg = "";
   rating: Rating = new Rating;
-  bool: boolean;
 
 
   submitted = false;
@@ -40,7 +41,7 @@ export class ParkingDetailsComponent implements OnInit {
     else return false;
   }
 
-  getRating(id?: number): void{
+  getRating(id: number): void{
     this.viewMode2=true;
     this.parkingService.getRating(id).subscribe({
       next: (data) => {
@@ -51,12 +52,11 @@ export class ParkingDetailsComponent implements OnInit {
   }
 
   saveRating() : void {
-    let data = {
+    const data = {
       estrellasCalificacion: this.rating.estrellasCalificacion,
       descripcionCalificacion: this.rating.descripcionCalificacion,
+      parking: (this.currentParking),
     };
-    this.error = false;
-    this.error_msg = "";
     this.parkingService.createRating(this.currentParking.id, data).subscribe({
       next: (res) => {
         this.submitted = true;
@@ -64,37 +64,18 @@ export class ParkingDetailsComponent implements OnInit {
       },
       error: (e) => { 
         console.error(e);
-        this.error = true;
-        this.error_msg = e.error.message
       }
     });
   }
   newRating() : void {
     this.submitted = false;
     this.rating = new Rating;
+    this.navigate();
   }
 
   navigate(): void{
     this.viewMode2 = !this.viewMode2;
     this.viewMode3 = !this.viewMode3;
   }
-  changeDisp(id?: any): void{
-    this.parkingService.updateDis(this.currentParking.id).subscribe({
-      next: ()=>{
-      },
-      error: ()=> {
-      }
-    });
-    this.currentParking.full = !this.currentParking.full;
-  }
-  changeStars(id?: any): void{
-    this.parkingService.updateStars(this.currentParking.id).subscribe({
-      next: ()=>{
-      },
-      error: ()=> {
-      }
-    });
-    window.location.reload();
-    this.navigate();
-  }
+
 }

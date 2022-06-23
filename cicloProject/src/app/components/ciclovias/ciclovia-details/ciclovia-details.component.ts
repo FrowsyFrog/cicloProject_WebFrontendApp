@@ -1,3 +1,4 @@
+import { CicloviasComponent } from './../ciclovias.component';
 import { BikelaneServiceService } from './../../../services/bikelane-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ParkingService } from './../../../services/parking.service';
@@ -31,7 +32,9 @@ export class CicloviaDetailsComponent implements OnInit {
    
   closeResult: string = '';
 
-  constructor(private bikelaneService: BikelaneServiceService, private route: ActivatedRoute) {
+  constructor(private bikelaneService: BikelaneServiceService,
+     private route: ActivatedRoute, 
+     private cicloviasComponent: CicloviasComponent) {
   }
 
   ngOnInit(): void {
@@ -78,6 +81,7 @@ export class CicloviaDetailsComponent implements OnInit {
         this.submitted = true;
         this.error = false;
         this.newRating();
+        this.cicloviasComponent.UpdateActiveBikeLane();
       },
       error: (e) => { 
         console.error(e);

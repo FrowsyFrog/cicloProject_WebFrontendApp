@@ -28,45 +28,24 @@
         <button (click)="retrieveRutas()" class="btn btn-success">
           Search
         </button>
-        <button (click)="retrieveFastest()" class="btn btn-success">
-          Fastest route
-        </button>
-        <div *ngIf="error">
-          <h5 style="color: red">{{ error_msg }}</h5>
-        </div>
         <br />
       </div>
     </div>
     <br />
     <div class="col-6">
-      <div *ngIf="fastestSearched">
-        <h3>Fastest Route ({{ timeF }} min)</h3>
-        <button
-          type="button"
-          class="list-group-item list-group-item-action"
-          aria-current="true"
-        >
-          <div class="routes_line">
-            {{ rutaF.ubicacionSalida }} - {{ rutaF.ubicacionLlegada }} - ID:
-            {{ rutaF.idRuta }}
-          </div>
-        </button>
-      </div>
-      <div *ngIf="!fastestSearched">
-        <h3>Similar Routes List (Estimated time: {{ avgtime }} min)</h3>
-        <div class="divScroll">
-          <div class="routes-list" *ngFor="let ruta of rutas">
-            <button
-              type="button"
-              class="list-group-item list-group-item-action"
-              aria-current="true"
-            >
-              <div class="routes_line">
-                {{ ruta.ubicacionSalida }} - {{ ruta.ubicacionLlegada }} - ID:
-                {{ ruta.idRuta }}
-              </div>
-            </button>
-          </div>
+      <h3>Similar Routes List</h3>
+      <div class="divScroll">
+        <div class="routes-list" *ngFor="let ruta of rutas">
+          <button
+            type="button"
+            class="list-group-item list-group-item-action"
+            aria-current="true"
+          >
+            <div class="routes_line">
+              {{ ruta.ubicacionSalida }} - {{ ruta.ubicacionLlegada }} - ID:
+              {{ ruta.idRuta }}
+            </div>
+          </button>
         </div>
       </div>
     </div>

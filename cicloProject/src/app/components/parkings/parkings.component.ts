@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {Parking} from 'src/app/models/entities';
-import {Rating} from 'src/app/models/entities';
 import {ParkingService} from 'src/app/services/parking.service';
 
 @Component({
@@ -11,7 +10,6 @@ import {ParkingService} from 'src/app/services/parking.service';
 export class ParkingsComponent implements OnInit {
 
   parking: Parking = new Parking;
-  rating: Rating = new Rating;
   parkings?: Parking[];
   submitted = false;
   error = false;
@@ -41,9 +39,9 @@ export class ParkingsComponent implements OnInit {
   saveParking() : void {
 
     let data = {
-      ubicacion: this.parking.ubicacion,  
-      isFull: false,
-      stars: 0,
+      ubicacion: this.parking.ubicacion,
+      isFull: 0,
+      stars: this.parking.stars
     };
     this.error = false;
     this.error_msg = "";
