@@ -12,8 +12,8 @@ export class BikelaneServiceService {
 
   constructor(private http: HttpClient) {}
 
-  getAll(): Observable<Bikelane[]> {
-    return this.http.get<Bikelane[]>(`${this.baseUrl}/ciclovia/list`);
+  getAll(params: any): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/ciclovia/list`,{params});
   }
   get(id: any): Observable<Bikelane> {
     return this.http.get(`${this.baseUrl}/ciclovia/${id}`);

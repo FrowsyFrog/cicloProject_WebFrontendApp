@@ -14,6 +14,7 @@ import { RutaComponent } from './components/ruta/ruta.component';
 import { FindrutasComponent } from './findrutas/findrutas.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { AccountComponent } from './components/account/account.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AccountComponent } from './components/account/account.component';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

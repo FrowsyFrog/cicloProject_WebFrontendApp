@@ -1,21 +1,38 @@
 <div class="container">
   <div class="row">
     <div class="col-6">
-      <h3>Bikelane List</h3>
+      <h3>Lista de ciclovias</h3>
 
-      <div class="divScroll">
-        <div class="bikelane-list" *ngFor="let bikelane of bikelanes; 
-        let i = index" [class.active]="i == currentIndex" 
-        (click)="SetActiveBikelane(bikelane, i)">
-          <button type="button" 
-          class="list-group-item list-group-item-action" 
-          aria-current="true">
-            <div class="parking_line">
-              {{bikelane.nombreCiclovia}}
-            </div>
-          </button>
-        </div>
+      <div>
+        <pagination-controls
+          previousLabel="Anterior"
+          nextLabel="Siguiente"
+          [responsive]="true"
+          (pageChange)="handlePageChange($event)"
+        ></pagination-controls>
       </div>
+
+      <ul class="list-group">
+        <li 
+          class="list-group-item" 
+          *ngFor="
+          let bikelane of bikelanes 
+            | paginate 
+            :{
+              itemsPerPage: pageSize,
+              currentPage: page,
+              totalItems: count
+            };
+          let i = index
+          "
+          [class.active]="i == currentIndex"
+          (click)="SetActiveBikelane(bikelane, i)"
+        >
+        {{bikelane.nombreCiclovia}}
+      </li>
+      </ul>
+
+
     </div>
     <br>
     <div *ngIf="!bikelane_selected">
@@ -28,8 +45,8 @@
     </div>
   </div>
 
-  <div class ="row-2">
-    <div class="col">
+  <div class ="row">
+    <div class="col-6">
       <div class="create-submit-form">
         <h3>Submit Bikelane</h3>
         <div *ngIf="!submitted">
@@ -61,4 +78,5 @@
       </div>
     </div>
   </div>
+
 </div>

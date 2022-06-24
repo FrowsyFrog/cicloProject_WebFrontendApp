@@ -10,7 +10,7 @@ import {BikelaneServiceService} from 'src/app/services/bikelane-service.service'
 export class CicloviasComponent implements OnInit {
 
   bikelane: Bikelane = new Bikelane;
-  bikelanes?: Bikelane[];
+  bikelanes: Bikelane[] = [];
   averageStars : number = 0;
   submitted = false;
   error = false;
@@ -18,6 +18,11 @@ export class CicloviasComponent implements OnInit {
   currentBikelane: Bikelane = {};
   currentIndex = -1;
   bikelane_selected: boolean = false;
+
+  page = 1;
+  count = 0;
+  pageSize = 3;
+  pageSizes = [3, 6, 9];
 
   constructor(private bikelaneService: BikelaneServiceService) { }
 
@@ -44,13 +49,33 @@ export class CicloviasComponent implements OnInit {
     });
   }
 
+  getRequestParams(page:number, pageSize:number):any{
+    let params: any = {};
+    params['page'] = page - 1;
+    params['size'] = pageSize;
+    return params;
+  }
+
+  handlePageChange(event: number): void {
+    this.page = event;
+    this.retrieveBikelanes();
+  }
+
+  handlePageSizeChange(event: any): void {
+    this.pageSize = event.target.value;
+    this.page = 1;
+    this.retrieveBikelanes();
+  }
+
   retrieveBikelanes(): void {
-    this.bikelaneService.getAll().subscribe({
-      next: (data) => {
-        this.bikelanes = data;
-        console.log(data);
-      },
-      error: (e) => console.error(e),
+    const params = this.getRequestParams(this.page, this.pageSize);
+    this.bikelaneService.getAll(params).subscribe((response)=>{
+      const{ciclovias, totalItems} = response;
+      this.bikelanes = ciclovias;
+      this.count = totalItems;
+    },
+    (error)=>{
+      console.log(error);
     });
   }
   saveBikelane() : void {
