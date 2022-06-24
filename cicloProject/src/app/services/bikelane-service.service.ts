@@ -12,9 +12,14 @@ export class BikelaneServiceService {
 
   constructor(private http: HttpClient) {}
 
-  getAll(): Observable<Bikelane[]> {
+  getAll(params: any): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/ciclovia/page`,{params});
+  }
+
+  getList(): Observable<Bikelane[]> {
     return this.http.get<Bikelane[]>(`${this.baseUrl}/ciclovia/list`);
   }
+
   get(id: any): Observable<Bikelane> {
     return this.http.get(`${this.baseUrl}/ciclovia/${id}`);
   }
