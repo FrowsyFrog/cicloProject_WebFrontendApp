@@ -2,11 +2,11 @@
   <div class="row">
     <div class="col">
       <div class="create-submit-form">
-        <h3>Submit Route</h3>
+        <h3>Crear Ruta</h3>
         <br />
         <div *ngIf="!submitted">
           <div class="form-group">
-            <label for="ubicacionSalida">Start Point</label>
+            <label for="ubicacionSalida">Punto Inicial</label>
             <input
               type="text"
               class="form-control"
@@ -17,7 +17,7 @@
             />
           </div>
           <div class="form-group">
-            <label for="ubicacionLlegada">Finish Point</label>
+            <label for="ubicacionLlegada">Punto Final</label>
             <input
               type="text"
               class="form-control"
@@ -39,12 +39,12 @@
             />
           </div>
           <br />
-          <button (click)="saveRuta()" class="btn btn-success">Create</button>
+          <button (click)="saveRuta()" class="btn btn-success">Crear</button>
         </div>
         <br />
         <div *ngIf="submitted">
-          <h5 style="color: green">Route created!</h5>
-          <button class="btn btn-primary" (click)="newRuta()">Back</button>
+          <h5 style="color: green">Ruta Creada!</h5>
+          <button class="btn btn-primary" (click)="newRuta()">Volver</button>
         </div>
         <div *ngIf="error">
           <h5 style="color: red">{{ error_msg }}</h5>
@@ -54,7 +54,7 @@
     <br />
     <div class="col-8">
       <div *ngIf="!selected">
-        <h3>Route List</h3>
+        <h3>Lista de Rutas</h3>
         <div class="ruta-list" *ngFor="let ruta of rutas">
           <button
             type="button"
@@ -69,7 +69,7 @@
         </div>
       </div>
       <div *ngIf="selected">
-        <h3>Route {{ruta.idRuta}}</h3>
+        <h3>Ruta {{ruta.idRuta}}</h3>
         <div class="ruta-list">
           <button
             type="button"
@@ -83,7 +83,20 @@
           </button>
         </div>
         <br />
-        <h3>Route's Bikelanes</h3>
+        <h3>
+          Ciclovías de Ruta
+          <span>
+            <button type="button" 
+              (click)="showRutaCiclovia()" 
+              class="btn btn-primary" 
+              data-toggle="modal" 
+              data-target="#myModal" 
+              data-backdrop="true">
+                  Crear
+              </button>
+          </span>
+        </h3>
+
         <div class="ruta-list" *ngFor="let ciclovia of rutaxCiclovias; let i = index">
           <button
             type="button"
@@ -91,7 +104,7 @@
             aria-current="true"
           >
             <div class="ciclovia_line">
-              Ciclovia #{{i+1}}: {{ ciclovia.tiempoRealizado }} minutos
+              Ciclovía #{{i+1}}: {{ ciclovia.tiempoRealizado }} minutos
             </div>
           </button>
         </div>
@@ -101,4 +114,85 @@
 
     </div>
   </div>
+
+  <div *ngIf="viewMode2">
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="model-title" id="modal-basic-title">Elige una ciclovía</h4>
+                    <button type="button" class="close" aria-label="Close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="divScroll">
+                        <div class="divScrollChild">
+                            <div *ngIf="lengthCheck(bikelanes); else editable">
+                                <div *ngFor="let _bikelane of bikelanes; let i = index">
+                                    <div>
+                                        <label><strong>Ciclovía #</strong></label> {{i+1}}
+                                    </div> 
+                                    <div>
+                                        <label><strong>Nombre:</strong></label> {{_bikelane.nombreCiclovia}}
+                                    </div>
+                                      <div>
+                                          <button type="button" data-dismiss="modal"
+                                          (click)="newRutaCiclovia(_bikelane)"
+                                          class="btn btn-info btn-md" data-toggle="modal"
+                                          data-target="#myModal2" data-backdrop="true">
+                                              Unir
+                                          </button>
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #editable class="divScroll">
+        <div class="divScrollChild">
+            <label>Parece que no hay Ciclovías...</label>
+        </div>
+    </ng-template>
+  </div>
+
+  <!-- Modal -->
+<div class="modal fade" id="myModal2" role="dialog">
+  <div class="modal-dialog">
+      
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="model-title" id="modal-basic-title">Crear Ruta por Ciclovía</h4>
+              <button type="button" class="close" aria-label="Close" data-dismiss="modal" (click)="navigate()">&times;</button>
+          </div>
+          <div class="modal-body">
+              <div *ngIf="!submittedrc">
+                  <div class="form-group">
+                    <label for="tiempoRealizado">Tiempo Realizado (minutos)</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="stars"
+                      required    
+                      [(ngModel)]="tiempoRealizado"
+                      name="tiempoRealizado"
+                    />
+                  </div>
+                  <div *ngIf="errorc">
+                      <h5 style="color: red">{{error_msg}}</h5>
+                  </div>
+                </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" (click)="saveRutaCiclovia()" class="btn btn-primary">
+                  Crear
+              </button>
+          </div>
+      </div>
+  </div>
+</div>
+
 </div>

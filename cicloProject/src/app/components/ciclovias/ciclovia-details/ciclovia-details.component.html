@@ -1,10 +1,10 @@
 <div>
     <div *ngIf="viewMode == true" class="col">
         <div *ngIf="currentBikelane.idCiclovia" class="currentBikelane">
-            <h3>Bikelane Details</h3>
-            <div><b>Name:</b> {{currentBikelane.nombreCiclovia}}</div>
+            <h3>Detalles de Ciclovía</h3>
+            <div><b>Nombre:</b> {{currentBikelane.nombreCiclovia}}</div>
             <div><b>Id:</b> {{currentBikelane.idCiclovia}}</div>
-            <div><b>Stars:</b> {{averageStars.toFixed(1)| number}}</div>
+            <div><b>Estrellas:</b> {{averageStars.toFixed(1)| number}}</div>
             <br>
             <button type="button" 
             (click)="getRating((currentBikelane.idCiclovia))" 
@@ -12,7 +12,7 @@
             data-toggle="modal" 
             data-target="#myModal" 
             data-backdrop="true">
-                Califications
+                Calificaciones
             </button>
             <button type="button" 
             (click)="getReports((currentBikelane.idCiclovia))" 
@@ -20,7 +20,7 @@
             data-toggle="modal" 
             data-target="#myModalReport" 
             data-backdrop="true">
-                Reports
+                Reportes
             </button>
         </div>
     </div>
@@ -130,13 +130,13 @@
         
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="model-title" id="modal-basic-title">Submit Calificacion</h4>
+                <h4 class="model-title" id="modal-basic-title">Crear Calificación</h4>
                 <button type="button" class="close" aria-label="Close" data-dismiss="modal" (click)="navigate()">&times;</button>
             </div>
             <div class="modal-body">
                 <div *ngIf="!submitted">
                     <div class="form-group">
-                      <label for="stars">Calificacion</label>
+                      <label for="stars">Calificación</label>
                       <input
                         type="number"
                         class="form-control"
@@ -147,7 +147,7 @@
                       />
                     </div>
                     <div class="form-group">
-                      <label for="descripcion">Descripcion</label>
+                      <label for="descripcion">Descripción</label>
                       <input
                         type="text"
                         class="form-control"
@@ -163,7 +163,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" (click)="saveRating()" class="btn btn-primary">
-                    Create Calification
+                    Crear Calificación
                 </button>
             </div>
         </div>
@@ -176,7 +176,7 @@
         
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="model-title" id="modal-basic-title">Submit Report</h4>
+                <h4 class="model-title" id="modal-basic-title">Crear Reporte</h4>
                 <button type="button" class="close" aria-label="Close" data-dismiss="modal" (click)="navigateReport()">&times;</button>
             </div>
             <div class="modal-body">
@@ -193,7 +193,7 @@
                       />
                     </div>
                     <div class="form-group">
-                      <label for="descripcion">Descripcion</label>
+                      <label for="descripcion">Descripción</label>
                       <input
                         type="text"
                         class="form-control"
@@ -209,7 +209,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" (click)="saveReport()" class="btn btn-primary">
-                    Create Report
+                    Crear Reporte
                 </button>
             </div>
         </div>

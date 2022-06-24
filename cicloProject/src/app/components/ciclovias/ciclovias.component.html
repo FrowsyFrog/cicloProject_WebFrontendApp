@@ -40,7 +40,7 @@
 
     <div class="col">
       <div *ngIf="!bikelane_selected">
-        <h5 style="color:goldenrod"><b>No bikelane was selected!</b></h5>
+        <h5 style="color:goldenrod"><b>Ninguna ciclovía fue seleccionada!</b></h5>
       </div>
       <div class="bikelane-detail">
         <app-ciclovia-details [viewMode]="true" 
@@ -52,10 +52,10 @@
   <div class ="row">
     <div class="col-6">
       <div class="create-submit-form">
-        <h3>Submit Bikelane</h3>
+        <h3>Crear Ciclovía</h3>
         <div *ngIf="!submitted">
           <div class="form-group">
-            <label for="name">Bikelane name</label>
+            <label for="name">Nombre de Ciclovía</label>
             <input
               type="text"
               class="form-control"
@@ -66,14 +66,14 @@
             />
           </div>
           <button (click)="saveBikelane()" class="btn btn-success">
-            Create
+            Crear
           </button>
         </div>
         <br>
         <div *ngIf="submitted">
-          <h5 style="color: green">Bikelane "{{bikelane.nombreCiclovia}}" created!</h5>
+          <h5 style="color: green">Ciclovía "{{bikelane.nombreCiclovia}}" creada!</h5>
           <button class="btn btn-primary" (click)="newBikelane()">
-            Back
+            Volver
           </button>
         </div>
         <div *ngIf="error">

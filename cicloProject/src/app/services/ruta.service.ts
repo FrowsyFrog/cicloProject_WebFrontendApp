@@ -22,4 +22,7 @@ export class RutaService {
   create(data: Ruta): Observable<any> {
     return this.http.post(`${this.baseUrl}/ruta`, data);
   }
+  createRutaCiclovia(data: Ruta): Observable<any> {
+    return this.http.post(`${this.baseUrl}/rutaxciclovia`, data);
+  }
 }
