@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-6">
+    <div class="col-7">
       <h3>Lista de ciclovias</h3>
 
       <div>
@@ -12,10 +12,9 @@
         ></pagination-controls>
       </div>
 
-      <ul class="list-group">
-        <li 
-          class="list-group-item" 
-          *ngFor="
+      <div class="row flex-row flex-nowrap">
+        <div class="card text-white bg-danger card-block" style="width: 18rem;"
+        *ngFor="
           let bikelane of bikelanes 
             | paginate 
             :{
@@ -28,23 +27,28 @@
           [class.active]="i == currentIndex"
           (click)="SetActiveBikelane(bikelane, i)"
         >
-        {{bikelane.nombreCiclovia}}
-      </li>
-      </ul>
+          <div class="card-header">Ciclovía</div>
+          <div class="card-body">
+            <h4 class="card-title">{{bikelane.nombreCiclovia}}</h4>
+            <p class = "card-text">Clic para ver detalles</p>
+          </div>
+        </div>
+      </div>
 
 
-    </div>
-    <br>
-    <div *ngIf="!bikelane_selected">
-      <h5 style="color:goldenrod"><b>No bikelane was selected!</b></h5>
-    </div>
-    <div class="bikelane-detail">
-      <app-ciclovia-details [viewMode]="true" 
-      [currentBikelane]="currentBikelane" [averageStars]="averageStars">
-      </app-ciclovia-details>
+    </div>    
+
+    <div class="col">
+      <div *ngIf="!bikelane_selected">
+        <h5 style="color:goldenrod"><b>No bikelane was selected!</b></h5>
+      </div>
+      <div class="bikelane-detail">
+        <app-ciclovia-details [viewMode]="true" 
+        [currentBikelane]="currentBikelane" [averageStars]="averageStars">
+        </app-ciclovia-details>
+      </div>
     </div>
   </div>
-
   <div class ="row">
     <div class="col-6">
       <div class="create-submit-form">
