@@ -11,13 +11,14 @@ export class Bikelane {
 }
 
 export class Rating {
-  id?: number;
+  idCalificacion?: number;
   estrellasCalificacion?: number;
   descripcionCalificacion?: string;
   parking?: Parking;
 }
 
 export class Report {
+  IdReport?: number;
   description?: string;
   idUser?: number;
 }

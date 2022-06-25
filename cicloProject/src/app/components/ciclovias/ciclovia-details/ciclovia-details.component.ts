@@ -21,6 +21,8 @@ export class CicloviaDetailsComponent implements OnInit {
 
   @Input() averageStars: number = 0;
 
+  ratingEditId: number = -1;
+  reportEditId: number = -1;
   ratings?: Rating[];
   reports?: Report[];
   rating: Rating = new Rating;
@@ -29,6 +31,7 @@ export class CicloviaDetailsComponent implements OnInit {
   submitted = false;
   error = false;
   error_msg = "";
+  editModal = false;
    
   closeResult: string = '';
 
@@ -91,12 +94,53 @@ export class CicloviaDetailsComponent implements OnInit {
     });
   }
 
+  editRating(): void{
+    const data = {
+      estrellasCalificacion: this.rating.estrellasCalificacion,
+      descripcionCalificacion: this.rating.descripcionCalificacion,
+    };
+    // print data
+    console.log(data);
+    this.bikelaneService.editRating(this.ratingEditId, data).subscribe({
+      next: (res) => {
+        this.submitted = true;
+        this.error = false;
+        this.newRating();
+        this.cicloviasComponent.UpdateActiveBikeLane();
+      },
+      error: (e) => { 
+        console.error(e);
+        this.error = true;
+        this.error_msg = e.error.message;
+      }
+    });
+  }
+
   saveReport() : void {
     const data = {
       description: this.report.description,
       idUser: this.report.idUser,
     };
     this.bikelaneService.createReport(this.currentBikelane.idCiclovia, data).subscribe({
+      next: (res) => {
+        this.submitted = true;
+        this.error = false;
+        this.newReport();
+      },
+      error: (e) => {
+        console.error(e);
+        this.error = true;
+        this.error_msg = e.error.message;
+      }
+    });
+  }
+
+  editReport() : void {
+    const data = {
+      description: this.report.description,
+      idUser: this.report.idUser,
+    };
+    this.bikelaneService.editReport(this.currentBikelane.idCiclovia, data).subscribe({
       next: (res) => {
         this.submitted = true;
         this.error = false;
@@ -129,14 +173,28 @@ export class CicloviaDetailsComponent implements OnInit {
     this.navigateReport();
   }
 
+  editNavigate(rating: Rating): void{
+    this.navigate();
+    this.editModal = true;
+    this.ratingEditId = (Number)(rating.idCalificacion);
+  }
+
+  editReportNavigate(report: Report): void{
+    this.navigateReport();
+    this.editModal = true;
+    this.reportEditId = (Number)(report.IdReport);
+  }
+
   navigate(): void{
     this.viewMode2 = !this.viewMode2;
     this.viewMode3  = false;
+    this.editModal = false;
   }
 
   navigateReport(): void{
     this.viewMode3 = !this.viewMode3;
     this.viewMode2 = false;
+    this.editModal = false;
   }
 
 }

@@ -43,7 +43,15 @@ export class BikelaneServiceService {
     return this.http.post(`${this.baseUrl}/ciclovia/${id}/calificaciones`, data);
   }
 
+  editRating(id: any, data: Rating): Observable<any> {
+    return this.http.put(`${this.baseUrl}/ciclovia/calificaciones/${id}`, data);
+  }
+
   createReport(id: any, data: Report): Observable<any> {
     return this.http.post(`${this.baseUrl}/ciclovia/${id}/reports`, data);
+  }
+
+  editReport(id: any, data: Report): Observable<any> {
+    return this.http.put(`${this.baseUrl}/report/${id}`, data);
   }
 }
