@@ -41,6 +41,8 @@ MIT
 @angular/router
 MIT
 
+ngx-pagination
+
 rxjs
 Apache-2.0
                                Apache License
