@@ -37,4 +37,10 @@ export class ParkingService {
     return this.http.put(`${this.baseUrl}/parking/rating/${id}`, null);
   }
 
+  getParkingxStars(stars: any): Observable<Parking[]>{
+    return this.http.get<Parking[]>(`${this.baseUrl}/parking/stars/${stars}`);
+  }
+  getParkingsDisp(): Observable<Parking[]> {
+    return this.http.get<Parking[]>(`${this.baseUrl}/parking/disponible`);
+  }
 }

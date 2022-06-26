@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { throttleTime } from 'rxjs';
 import {Parking} from 'src/app/models/entities';
 import {Rating} from 'src/app/models/entities';
 import {ParkingService} from 'src/app/services/parking.service';
@@ -14,10 +15,13 @@ export class ParkingsComponent implements OnInit {
   rating: Rating = new Rating;
   parkings?: Parking[];
   submitted = false;
+  searched = false;
+  filtered = false;
   error = false;
   error_msg = "";
   currentParking: Parking = {};
   currentIndex = -1;
+  stars: number;
 
   constructor(private parkingService: ParkingService) { }
 
@@ -31,6 +35,8 @@ export class ParkingsComponent implements OnInit {
   }
 
   retrieveParkings(): void {
+    this.filtered = false;
+    this.searched = false;
     this.parkingService.getAll().subscribe({
       next: (data) => {
         this.parkings = data;
@@ -38,17 +44,35 @@ export class ParkingsComponent implements OnInit {
       error: (e) => console.error(e),
     });
   }
+  retrieveParkingsxStars(): void {
+    this.searched = true;
+    this.parkingService.getParkingxStars(this.stars).subscribe({
+      next: (data) => {
+        this.parkings = data;
+      },
+      error: (e) => console.error(e),
+    });
+  }
+  retrieveParkingsDisp(): void {
+    this.filtered = true;
+    this.parkingService.getParkingsDisp().subscribe({
+      next: (data) => {
+        this.parkings = data;
+      },
+      error: (e) => console.error(e),
+    });
+  }
   saveParking() : void {
-
     let data = {
       ubicacion: this.parking.ubicacion,  
+      totalSlots: this.parking.totalSlots,
       isFull: false,
-      stars: 0,
     };
     this.error = false;
     this.error_msg = "";
     this.parkingService.create(data).subscribe({
       next: (res) => {
+        console.log(res);
         this.submitted = true;
         this.error = false;
         this.retrieveParkings();
@@ -62,6 +86,8 @@ export class ParkingsComponent implements OnInit {
   }
   newParking() : void {
     this.submitted = false;
+    this.searched = false;
+    this.filtered = false;
     this.parking = new Parking;
     this.error = false;
     this.error_msg = "";

@@ -2,9 +2,9 @@
   <div class="row">
     <div class="col">
       <div class="create-submit-form">
-        <h3>Search similar Routes</h3>
+        <h3>Buscar Rutas similares</h3>
         <div class="form-group">
-          <label for="location">Start location</label>
+          <label for="location">Ubicación de salida</label>
           <input
             type="text"
             class="form-control"
@@ -15,7 +15,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="stars">Finish location</label>
+          <label for="stars">Ubicación de llegada</label>
           <input
             type="text"
             class="form-control"
@@ -26,10 +26,10 @@
           />
         </div>
         <button (click)="retrieveRutas()" class="btn btn-success">
-          Search
+          Buscar
         </button>
         <button (click)="retrieveFastest()" class="btn btn-success">
-          Fastest route
+          Ruta más rápida
         </button>
         <div *ngIf="error">
           <h5 style="color: red">{{ error_msg }}</h5>
@@ -40,7 +40,7 @@
     <br />
     <div class="col-6">
       <div *ngIf="fastestSearched">
-        <h3>Fastest Route ({{ timeF }} min)</h3>
+        <h3>Ruta más rápida ({{ timeF }} min)</h3>
         <button
           type="button"
           class="list-group-item list-group-item-action"
@@ -53,7 +53,10 @@
         </button>
       </div>
       <div *ngIf="!fastestSearched">
-        <h3>Similar Routes List (Estimated time: {{ avgtime }} min)</h3>
+        <h3>
+          Lista de Rutas similares<br />
+          (Tiempo estimado: {{ avgtime }} min)
+        </h3>
         <div class="divScroll">
           <div class="routes-list" *ngFor="let ruta of rutas">
             <button
