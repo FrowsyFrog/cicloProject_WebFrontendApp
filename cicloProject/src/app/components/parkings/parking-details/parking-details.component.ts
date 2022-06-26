@@ -44,6 +44,7 @@ export class ParkingDetailsComponent implements OnInit {
     this.viewMode2=true;
     this.parkingService.getRating(id).subscribe({
       next: (data) => {
+        this.changeStars();
         this.ratings = data;
       },
       error: (e) => console.error(e),
@@ -61,6 +62,7 @@ export class ParkingDetailsComponent implements OnInit {
       next: (res) => {
         this.submitted = true;
         this.newRating();
+        this.changeStars();
       },
       error: (e) => { 
         console.error(e);
@@ -94,7 +96,6 @@ export class ParkingDetailsComponent implements OnInit {
       error: ()=> {
       }
     });
-    window.location.reload();
-    this.navigate();
+    
   }
 }

@@ -4,6 +4,8 @@ export class Parking {
   stars?: number;
   id?: number;
   descripcion?: string;
+  slotsOccupied?: number;
+  totalSlots?: number;
 }
 export class Bikelane {
   nombreCiclovia?: string;

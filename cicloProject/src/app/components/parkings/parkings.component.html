@@ -2,10 +2,10 @@
   <div class="row">
     <div class="col">
       <div class="create-submit-form">
-        <h3>Submit Parking</h3>
+        <h3>Añadir Estacionamiento</h3>
         <div *ngIf="!submitted">
           <div class="form-group">
-            <label for="location">Location</label>
+            <label for="location">Ubicación</label>
             <input
               type="text"
               class="form-control"
@@ -14,16 +14,50 @@
               [(ngModel)]="parking.ubicacion"
               name="location"
             />
+            <br />
+            <label for="totalSlots">Total de espacios</label>
+            <input
+              type="number"
+              class="form-control"
+              id="totalSlots"
+              required
+              [(ngModel)]="parking.totalSlots"
+              name="totalSlots"
+            />
           </div>
-          <button (click)="saveParking()" class="btn btn-success">
-            Create
-          </button>
+          <button (click)="saveParking()" class="btn btn-success">Crear</button>
         </div>
         <br />
         <div *ngIf="submitted">
-          <h5 style="color: green">Parking created!</h5>
-          <button class="btn btn-primary" (click)="newParking()">Back</button>
+          <h5 style="color: green">Estacionamiento creado</h5>
+          <button class="btn btn-primary" (click)="newParking()">Volver</button>
         </div>
+        <div *ngIf="error">
+          <h5 style="color: red">{{ error_msg }}</h5>
+        </div>
+      </div>
+      <div class="create-submit-form">
+        <h3>Filtrar Estacionamientos</h3>
+        <div *ngIf="!submitted">
+          <div class="form-group">
+            <label for="location">Estrellas</label>
+            <input
+              type="text"
+              class="form-control"
+              id="stars"
+              required
+              type="number"
+              min="0"
+              max="5"
+              [(ngModel)]="stars"
+              name="stars"
+            />
+          </div>
+          <button (click)="retrieveParkingsxStars()" class="btn btn-success">
+            Filtrar
+          </button>
+        </div>
+        <br />
         <div *ngIf="error">
           <h5 style="color: red">{{ error_msg }}</h5>
         </div>
@@ -39,22 +73,72 @@
     </div>
     <br />
     <div class="col-6">
-      <h3>Parking List</h3>
-      <div class="divScroll">
-        <div
-          class="parking-list"
-          *ngFor="let parking of parkings; let i = index"
-          [class.active]="i == currentIndex"
-          (click)="setActiveParking(parking, i)"
-        >
+      <div *ngIf="!searched">
+        <h3>Lista de Estacionamientos</h3>
+        <div *ngIf="!filtered">
           <button
-            type="button"
-            class="list-group-item list-group-item-action"
-            aria-current="true"
+            (click)="retrieveParkingsDisp()"
+            class="btn btn-success"
+            style="position: relative; bottom: 5px"
           >
-            <div class="parking_line">
-              {{ parking.ubicacion }}: {{ parking.stars }} stars
-            </div>
+            Ver Disponibles
+          </button>
+        </div>
+        <div *ngIf="filtered">
+          <button
+            (click)="retrieveParkings()"
+            class="btn btn-success"
+            style="position: relative; bottom: 5px"
+          >
+            Ver todos
+          </button>
+        </div>
+        <div class="divScroll">
+          <div
+            class="parking-list"
+            *ngFor="let parking of parkings; let i = index"
+            [class.active]="i == currentIndex"
+            (click)="setActiveParking(parking, i)"
+          >
+            <button
+              type="button"
+              class="list-group-item list-group-item-action"
+              aria-current="true"
+            >
+              <div class="parking_line">
+                {{ parking.ubicacion }}: {{ parking.stars }} estrellas
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="searched">
+        <h3>Lista de Estacionamientos ({{ stars }} estrellas)</h3>
+        <div class="divScroll">
+          <div
+            class="parking-list"
+            *ngFor="let parking of parkings; let i = index"
+            [class.active]="i == currentIndex"
+            (click)="setActiveParking(parking, i)"
+          >
+            <button
+              type="button"
+              class="list-group-item list-group-item-action"
+              aria-current="true"
+            >
+              <div class="parking_line">
+                {{ parking.ubicacion }}: {{ parking.stars }} estrellas
+              </div>
+            </button>
+          </div>
+        </div>
+        <div *ngIf="searched">
+          <button
+            (click)="retrieveParkings()"
+            class="btn btn-secondary"
+            style="position: relative; top: 10px"
+          >
+            Volver
           </button>
         </div>
       </div>
